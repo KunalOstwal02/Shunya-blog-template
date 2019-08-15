@@ -1,6 +1,7 @@
-### IR Sensor
+### IR Sensor GPIO
 
 _Code:_
+
 
 ```
 #include <stdio.h>
@@ -26,3 +27,30 @@ delay(100);
 	return 0;
 }
 ```
+
+### Alcohol Sensor I2C
+
+_Code:_
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <shunyaInterfaces.h>
+#include <Wire.h>
+#include <pcf8591.h>
+
+int main(void)
+{
+	shunyaInterfacesSetup();
+	pcf8591Setup();
+	while(1) {
+		int value;
+		value = pcf8591Read(A1);
+		printf("Alcohol Value is BAC %d\n",value);
+	}
+	return 0;
+}
+```
+
+
